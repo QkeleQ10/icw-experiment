@@ -1,7 +1,12 @@
 <script setup>
+import { computed } from 'vue'
 import { useDataStore } from '@/stores/data.js'
 
 const data = useDataStore()
+
+const canProceed = computed(() => {
+    return data.participant.consented && data.participant.firstname && data.participant.lastname
+})
 </script>
 
 <template>
@@ -15,7 +20,8 @@ const data = useDataStore()
         <br>
         Onderzoek: {{ data.research.title }}<br>
         <br>
-        Ondergetekende, <input v-model="data.name" placeholder="(naam + voornaam)">, verklaart uit vrije wil deel te
+        Ondergetekende, <input v-model="data.participant.firstname" placeholder="voornaam"> <input
+            v-model="data.participant.lastname" placeholder="achternaam">, verklaart uit vrije wil deel te
         nemen aan het onderzoek “{{ data.research.title }}”, Uitgaande van het vak “Inleiding tot de Cognitiewetenschap”
         aan de
         Universiteit Utrecht.<br><br>
@@ -30,15 +36,17 @@ const data = useDataStore()
         <br>
         Naam en handtekening van de proefpersoon:<br>
         <br>
-        {{ data.name }}<br>
-        <br>
+        {{ data.participant.firstname }} {{ data.participant.lastname }}<br>
+        <label for="consent-box"><input id="consent-box" type="checkbox" v-model="data.participant.consented"> Ik ga
+            akkoord</label><br>
         <br>
         <br>
         Naam en handtekening van de onderzoeker:<br>
         <br>
+        {{ data.research.author }}<br>
         <br>
         <br>
-        <br>
+        <RouterLink to="/experiment" v-show="canProceed">Beginnen</RouterLink>
     </p>
 </template>
 

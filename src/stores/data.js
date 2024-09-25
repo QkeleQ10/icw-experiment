@@ -2,13 +2,15 @@ import { ref } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useDataStore = defineStore('data', () => {
-  const name = ref('')
-
   const obj = {
-    name,
+    participant: {
+      firstname: ref(''),
+      lastname: ref(''),
+      consented: ref(false)
+    },
     research: {
       author: "[NAAM ONDERZOEKER]",
-      title: '[TITEL ONDERZOEK]',
+      title: 'Het effect van cafeïne op het zoekvermogen',
     }
   }
 
