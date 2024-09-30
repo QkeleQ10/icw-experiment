@@ -11,10 +11,12 @@ const router = createRouter({
     {
       path: '/consent',
       name: 'consent',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('../views/ConsentView.vue')
+    },
+    {
+      path: '/experiment',
+      name: 'experiment',
+      component: () => import('../views/ExperimentView.vue')
     }
   ]
 })

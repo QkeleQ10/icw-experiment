@@ -10,44 +10,51 @@ const canProceed = computed(() => {
 </script>
 
 <template>
-    <p>
-        {{ data.research.author }}<br>
-        <br>
-        Universiteit Utrecht<br>
-        Opleiding Kunstmatige Intelligentie<br>
-        e-mail: jouw.email@uu.nl<br>
-        <br>
-        <br>
-        Onderzoek: {{ data.research.title }}<br>
-        <br>
-        Ondergetekende, <input v-model="data.participant.firstname" placeholder="voornaam"> <input
-            v-model="data.participant.lastname" placeholder="achternaam">, verklaart uit vrije wil deel te
-        nemen aan het onderzoek “{{ data.research.title }}”, Uitgaande van het vak “Inleiding tot de Cognitiewetenschap”
-        aan de
-        Universiteit Utrecht.<br><br>
-        “Ik ga ermee akkoord dat de resultaten van dit onderzoek gebruikt zullen worden voor wetenschappelijke
-        doeleinden en mogen gepubliceerd worden. Mijn naam wordt daarbij niet gepubliceerd en de vertrouwelijkheid van
-        de gegevens is in elk stadium van het onderzoek gewaarborgd. Ik behoud het recht om op elk moment mijn deelname
-        aan het onderzoek stop te zetten.”<br>
-        <br>
-        <br>
-        Datum: {{ new Date().toLocaleDateString('nl-NL', { day: '2-digit', month: '2-digit', year: 'numeric' }) }}<br>
-        <br>
-        <br>
-        Naam en handtekening van de proefpersoon:<br>
-        <br>
-        {{ data.participant.firstname }} {{ data.participant.lastname }}<br>
-        <label for="consent-box"><input id="consent-box" type="checkbox" v-model="data.participant.consented"> Ik ga
-            akkoord</label><br>
-        <br>
-        <br>
-        Naam en handtekening van de onderzoeker:<br>
-        <br>
-        {{ data.research.author }}<br>
-        <br>
-        <br>
+    <main>
+        <p>
+            {{ data.research.author }}<br>
+            <br>
+            Universiteit Utrecht<br>
+            Opleiding Kunstmatige Intelligentie<br>
+            e-mail: jouw.email@uu.nl<br>
+            <br>
+            <br>
+            Onderzoek: {{ data.research.title }}<br>
+            <br>
+            Ondergetekende, <input v-model="data.participant.firstname" placeholder="voornaam"> <input
+                v-model="data.participant.lastname" placeholder="achternaam">, verklaart uit vrije wil deel te
+            nemen aan het onderzoek “{{ data.research.title }}”, Uitgaande van het vak “Inleiding tot de
+            Cognitiewetenschap”
+            aan de
+            Universiteit Utrecht.<br><br>
+            “Ik ga ermee akkoord dat de resultaten van dit onderzoek gebruikt zullen worden voor wetenschappelijke
+            doeleinden en mogen gepubliceerd worden. Mijn naam wordt daarbij niet gepubliceerd en de vertrouwelijkheid
+            van
+            de gegevens is in elk stadium van het onderzoek gewaarborgd. Ik behoud het recht om op elk moment mijn
+            deelname
+            aan het onderzoek stop te zetten.”<br>
+        </p>
+        <p v-if="data.participant.firstname && data.participant.lastname">
+            <br>
+            <b>Datum:</b> {{ new Date().toLocaleDateString('nl-NL', {
+                day: '2-digit', month: '2-digit', year: 'numeric'
+            })
+            }}<br>
+            <br>
+            <b>Naam en handtekening van de proefpersoon:</b><br>
+            {{ data.participant.firstname }} {{ data.participant.lastname }}<br>
+            <label for="consent-box"><input id="consent-box" type="checkbox" v-model="data.participant.consented"> Ik ga
+                akkoord</label><br>
+            <br>
+            <b>Naam en handtekening van de onderzoeker:</b><br>
+            {{ data.research.author }}<br>
+        </p>
         <RouterLink to="/experiment" v-show="canProceed">Beginnen</RouterLink>
-    </p>
+    </main>
 </template>
 
-<style></style>
+<style scoped>
+main {
+    padding: 1rem 2rem;
+}
+</style>

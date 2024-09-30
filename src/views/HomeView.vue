@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <RouterLink to="/consent">Consent</RouterLink>
+  <RouterLink to="/consent">Beginnen</RouterLink>
 </template>
 
 <style></style>
