@@ -1,19 +1,19 @@
 @import './base.css';
 
 #app {
-  width: 100%;
-  max-width: min(95vw, 1280px);
-  max-height: 95vh;
-  aspect-ratio: 16 / 9;
-  overflow: auto;
-  background: #ffffff;
-  color: #2c3e50;
-  font-weight: normal;
+    flex-grow: 1;
+    max-width: min(95vw, 1280px);
+    max-height: 95vh;
+    aspect-ratio: 16 / 9;
+    overflow: auto;
+    background: #ffffff;
+    color: #2c3e50;
+    font-weight: normal;
 }
 
 a,
 .green {
-  text-decoration: none;
-  color: #00bd7e;
-  padding: 3px;
+    text-decoration: none;
+    color: #00bd7e;
+    padding: 3px;
 }

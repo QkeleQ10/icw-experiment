@@ -49,7 +49,7 @@ const canProceed = computed(() => {
             <b>Naam en handtekening van de onderzoeker:</b><br>
             {{ data.research.author }}<br>
         </p>
-        <RouterLink to="/experiment" v-show="canProceed">Beginnen</RouterLink>
+        <RouterLink to="/experiment" v-show="canProceed">Proef starten</RouterLink>
     </main>
 </template>
 

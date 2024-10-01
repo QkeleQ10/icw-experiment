@@ -1,1 +1,0 @@
-import{k as t,l as e}from"./index-BYEa1zKm.js";const r=t("data",()=>({participant:{firstname:e(""),lastname:e(""),consented:e(!1)},research:{author:"[NAAM ONDERZOEKER]",title:"Het effect van cafeïne op het zoekvermogen"}}));export{r as u};
