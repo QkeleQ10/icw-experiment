@@ -21,7 +21,7 @@ const canProceed = computed(() => {
             <br>
             Onderzoek: {{ data.research.title }}<br>
             <br>
-            Ondergetekende, <input v-model="data.participant.firstname" placeholder="voornaam"> <input
+            Ondergetekende, <input v-model="data.participant.firstname" placeholder="voornaam" autofocus="true"> <input
                 v-model="data.participant.lastname" placeholder="achternaam">, verklaart uit vrije wil deel te
             nemen aan het onderzoek “{{ data.research.title }}”, Uitgaande van het vak “Inleiding tot de
             Cognitiewetenschap”
@@ -43,7 +43,7 @@ const canProceed = computed(() => {
             <br>
             <b>Naam en handtekening van de proefpersoon:</b><br>
             {{ data.participant.firstname }} {{ data.participant.lastname }}<br>
-            <label for="consent-box"><input id="consent-box" type="checkbox" v-model="data.participant.consented"> Ik ga
+            <label for="consent-box" class="green"><input id="consent-box" type="checkbox" v-model="data.participant.consented"> Ik ga
                 akkoord</label><br>
             <br>
             <b>Naam en handtekening van de onderzoeker:</b><br>

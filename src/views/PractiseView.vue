@@ -31,30 +31,42 @@ async function executeCycle(index) {
     }, 1000)
     else state.value = 'debrief'
 }
+
+async function startPractise() {
+    state.value = 'blank'
+    setTimeout(() => {
+        executeCycle(0)
+    }, 1000)
+}
 </script>
 
 <template>
     <main id="practise-view">
         <div v-if="state === 'brief'">
             <p>
-                Je begint met 5 oefeningen. Deze tellen niet mee voor het uiteindelijke resultaat.<br>
+                De proef bestaat uit 20 zoekplaten.<br>
                 <br>
-                Op de volgende dia verschijnt er een <img src="@/assets/digitdummy.svg">. Dit kruisje betekent dat je
-                kan beginnen met de volgende zoekplaat.<br>
-                Het formaat van het kruisje is een indicatie voor de grootte en moeilijkheidsgraad van de zoekplaat.<br>
-                Neem zo veel tijd als je nodig hebt. De tijd wordt niet bijgehouden zo lang het kruisje in beeld is.<br>
+                Wanneer je met een zoekplaat kunt beginnen, verschijnt er een dia met het symbool <img
+                    src="@/assets/digitdummy.svg">.<br>
+                Klik pas door wanneer je er klaar voor bent. Zodra je doorklikt, komt de zoekplaat in beeld en gaat de
+                tijd in.<br>
                 <br>
-                Na het doorklikken krijg je de zoekplaat te zien. De timer begint te lopen. Het is de bedoeling dat je
-                het
-                figuur <img src="@/assets/digit5.svg"> zo snel mogelijk herkent tussen de vele <img
-                    src="@/assets/digit2.svg">'en.<br>
-                Herken je het figuur? Klik dan meteen door. De timer stopt en het scherm wordt leeg. Neem even
-                pauze.<br>
-                Wanneer het kruisje weer verschijnt, kun je doorgaan naar de volgende zoekplaat wanneer je wilt.<br>
+                In elke zoekplaat moet je het figuur <img src="@/assets/digit5.svg" alt="5"> zo snel
+                mogelijk proberen te herkennen tussen de vele <img src="@/assets/digit2.svg" alt="2">'en.<br>
+                Herken je het figuur? Klik dan <u>meteen</u> door. De tijd wordt automatisch bijgehouden.<br>
+                Probeer niet door te klikken tot je <u>zeker weet</u> dat je het <u>juiste</u> figuur hebt gezien.<br>
                 <br>
-                Je kunt nu met de eerste oefening beginnen.<br>
+                Na het doorklikken verdwijnt de zoekplaat.<br>
+                Iets later verschijnt het symbool <img src="@/assets/digitdummy.svg"> weer en kun je beginnen met de
+                volgende zoekplaat. Klik door wanneer je wilt.<br>
+                <br>
+                In dit experiment kun je doorklikken met een toets op het toetsenbord, met een muisknop of met het touchscreen.<br>
+                <br>
+                Je krijgt eerst 5 oefeningen.
+                Je kunt met de eerste oefening beginnen met onderstaande knop.<br>
+                <br>
             </p>
-            <a @click="executeCycle(0)">Oefening starten</a>
+            <a @click="startPractise">Oefening starten</a>
         </div>
         <FixationSlide v-if="state === 'fixation'" :size="observation.size" />
         <StimuliSlide v-else-if="state === 'stimuli'" :seed="observation.seed" :distance="observation.distance"
@@ -63,10 +75,10 @@ async function executeCycle(index) {
         <div v-else-if="state === 'debrief'">
             <p>
                 Dat was de laatste oefening. Je bent nu klaar voor de echte proef.<br>
+                Wederom, neem je tijd en vergeet niet af en toe een adempauze te nemen.<br>
                 <br>
-                De proef bestaat uit 20 zoekplaten.<br>
+                Je kunt beginnen met onderstaande knop.<br>
                 <br>
-                <b>Let op:</b> Als je doorklikt, begint de proef echt. Je kunt niet meer terug.<br>
             </p>
             <RouterLink to="/experiment">Proef starten</RouterLink>
         </div>
