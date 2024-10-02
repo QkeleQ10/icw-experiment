@@ -25,7 +25,7 @@ async function executeCycle(index) {
     state.value = 'blank'
     const endTime = new Date()
     const responseTime = endTime - startTime
-    data.observations[index].responseTime = responseTime
+    data.practiseObservations[index].responseTime = responseTime
     if (data.practiseObservations[index + 1]) setTimeout(() => {
         executeCycle(index + 1)
     }, 1000)

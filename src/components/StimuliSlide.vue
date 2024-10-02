@@ -25,7 +25,7 @@ const props = defineProps({
 })
 
 const reveal = false
-const rng = new seedrandom((data.participant.caffeinated ? 'c' : 'd') + props.seed)
+const rng = new seedrandom((data.participant.caffeinated ? 'caf' : 'decaf') + props.seed)
 
 const coordinates = new PoissonDiskSampling({
     shape: [16, 9],
