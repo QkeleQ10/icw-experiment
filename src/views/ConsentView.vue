@@ -16,7 +16,7 @@ const canProceed = computed(() => {
             <br>
             Universiteit Utrecht<br>
             Opleiding Kunstmatige Intelligentie<br>
-            e-mail: jouw.email@uu.nl<br>
+            E-mail: {{ data.research.mail }}<br>
             <br>
             <br>
             Onderzoek: {{ data.research.title }}<br>
@@ -48,8 +48,9 @@ const canProceed = computed(() => {
             <br>
             <b>Naam en handtekening van de onderzoeker:</b><br>
             {{ data.research.author }}<br>
+            <label for="consent-box"><input id="consent-box" type="checkbox" :checked="true" disabled></label><br>
         </p>
-        <RouterLink to="/experiment" v-show="canProceed">Proef starten</RouterLink>
+        <RouterLink to="/practise" v-show="canProceed">Volgende</RouterLink>
     </main>
 </template>
 

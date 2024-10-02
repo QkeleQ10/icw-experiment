@@ -1,7 +1,10 @@
 <script setup>
 import { ref } from 'vue'
+import { useDataStore } from '@/stores/data.js'
 import seedrandom from 'seedrandom'
 import PoissonDiskSampling from 'poisson-disk-sampling'
+
+const data = useDataStore()
 
 const props = defineProps({
     seed: {
@@ -22,7 +25,7 @@ const props = defineProps({
 })
 
 const reveal = false
-const rng = new seedrandom(props.seed)
+const rng = new seedrandom((data.participant.caffeinated ? 'c' : 'd') + props.seed)
 
 const coordinates = new PoissonDiskSampling({
     shape: [16, 9],
@@ -46,5 +49,7 @@ stimuli.value[Math.floor(rng() * stimuli.value.length)].target = true
     position: relative;
     width: 100%;
     height: 100%;
+    overflow: visible;
+    scale: 0.9;
 }
 </style>

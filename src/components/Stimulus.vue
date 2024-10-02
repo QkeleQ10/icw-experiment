@@ -38,7 +38,7 @@ defineProps({
 <style scoped>
 .stimulus {
     position: absolute;
-    width: calc(var(--size) * 1%);
+    width: calc(var(--size) * 1.5%);
     aspect-ratio: 1;
     left: calc(var(--x) * 100%);
     top: calc(var(--y) * 100%);

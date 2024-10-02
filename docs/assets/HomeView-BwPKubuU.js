@@ -1,1 +1,0 @@
-import{_ as t}from"./_plugin-vue_export-helper-DlAUqK2U.js";import{c as n,a as r,w as a,r as c,o as s,b as _}from"./index-CI-VM3Ma.js";const i={};function m(d,e){const o=c("RouterLink");return s(),n("main",null,[r(o,{to:"/consent"},{default:a(()=>e[0]||(e[0]=[_("Beginnen")])),_:1})])}const p=t(i,[["render",m],["__scopeId","data-v-55f0cdc0"]]);export{p as default};

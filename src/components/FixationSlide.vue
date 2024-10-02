@@ -16,7 +16,7 @@ defineProps({
 
 <style scoped>
 .fixation-point {
-    width: calc(var(--size) * 1%);
+    width: calc(var(--size) * 1.5%);
     aspect-ratio: 1;
     display: flex;
     justify-content: center;

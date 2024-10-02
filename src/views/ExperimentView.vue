@@ -1,8 +1,10 @@
 <script setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
 import { useDataStore } from '@/stores/data.js'
+import { useRouter } from 'vue-router'
 
 const data = useDataStore()
+const router = useRouter()
 
 const state = ref('blank')
 const observation = ref(data.observations[0])
@@ -17,6 +19,7 @@ function awaitInput() {
 
 async function executeCycle(index) {
     observation.value = data.observations[index]
+    state.value = 'fixation'
     await awaitInput()
     state.value = 'stimuli'
     const startTime = new Date()
@@ -25,16 +28,22 @@ async function executeCycle(index) {
     const endTime = new Date()
     const responseTime = endTime - startTime
     data.observations[index].responseTime = responseTime
-    if (data.observations[index + 1]) executeCycle(index + 1)
+    if (data.observations[index + 1]) setTimeout(() => {
+        executeCycle(index + 1)
+    }, 1000)
+    else router.push('/result')
 }
-executeCycle(0)
+setTimeout(() => {
+    executeCycle(0)
+}, 1000)
 </script>
 
 <template>
     <main id="experiment-view">
-        <BlankSlide v-if="state === 'blank'" :size="observation.size" />
+        <FixationSlide v-if="state === 'fixation'" :size="observation.size" />
         <StimuliSlide v-else-if="state === 'stimuli'" :seed="observation.seed" :distance="observation.distance"
             :size="observation.size" />
+        <div v-if="state === 'blank'"></div>
     </main>
 </template>
 
